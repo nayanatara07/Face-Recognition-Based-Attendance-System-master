@@ -98,7 +98,7 @@ def TakeImages():
                 #incrementing sample number 
                 sampleNum=sampleNum+1
                 #saving the captured face in the dataset folder TrainingImage
-                cv2.imwrite("TrainingImage "+name +"."+Id +'.'+ str(sampleNum) + ".jpg", gray[y:y+h,x:x+w])
+                cv2.imwrite("TrainingImage\ "+name +"."+Id +'.'+ str(sampleNum) + ".jpg", gray[y:y+h,x:x+w])
                 #display the frame
                 cv2.imshow('frame',img)
             #wait for 100 miliseconds 
@@ -184,7 +184,6 @@ def TrackImages():
             else:
                 Id='Unknown'                
                 tt=str(Id)  
-                
             if(conf > 75):
                 noOfFile=len(os.listdir("ImagesUnknown"))+1
                 cv2.imwrite("ImagesUnknown\Image"+str(noOfFile) + ".jpg", im[y:y+h,x:x+w])            
@@ -218,5 +217,11 @@ trackImg = tk.Button(window, text="Track Images", command=TrackImages  ,fg="red"
 trackImg.place(x=800, y=500)
 quitWindow = tk.Button(window, text="Quit", command=window.destroy  ,fg="red"  ,bg="yellow"  ,width=20  ,height=3, activebackground = "Red" ,font=('times', 15, ' bold '))
 quitWindow.place(x=1100, y=500)
+copyWrite = tk.Text(window, background=window.cget("background"), borderwidth=0,font=('times', 30, 'italic bold underline'))
+copyWrite.tag_configure("superscript", offset=10)
+copyWrite.insert("insert", "Developed by Ashish","", "TEAM", "superscript")
+copyWrite.configure(state="disabled",fg="red"  )
+copyWrite.pack(side="left")
+copyWrite.place(x=800, y=750)
  
 window.mainloop()
