@@ -11,6 +11,18 @@ import time
 import tkinter.ttk as ttk
 import tkinter.font as font
 
+# colors
+background_color = '#ffa69e'
+button_color = '#f94144'
+label_color = '#FC7572'
+input_color = '#FBCFCB'
+
+# hights
+button_height = 2
+button_width = 15
+input_height = 5
+input_width = 20
+
 window = tk.Tk()
 
 window.title("Face_Recogniser")
@@ -18,7 +30,8 @@ window.title("Face_Recogniser")
 dialog_title = 'QUIT'
 dialog_text = 'Are you sure?'
 
-window.configure(background='blue')
+window.geometry("1500x800")
+window.configure(background=background_color)
 
 window.grid_rowconfigure(0, weight=1)
 window.grid_columnconfigure(0, weight=1)
@@ -26,34 +39,31 @@ window.grid_columnconfigure(0, weight=1)
 
 
 
-message = tk.Label(window, text="Face-Recognition-Based-Attendance-Management-System"   ,width=50  ,height=3,font=('times', 30, 'italic bold underline')) 
+message = tk.Label(window, text="FACE RECOGNITION BASED ATTENDANCE MANAGEMENT SYSTEM"   ,width=70  ,height=3,font=('algerian', 20, 'bold'), background=background_color) 
 
-message.place(x=200, y=20)
+message.place(x=100, y=10)
 
-lbl = tk.Label(window, text="Enter ID",width=20  ,height=2  ,fg="red"  ,bg="yellow" ,font=('times', 15, ' bold ') ) 
-lbl.place(x=400, y=200)
+lbl = tk.Label(window, text="Enter ID:",width=20  ,height=5  ,fg="black"  ,bg=background_color ,font=('times', 15, ' bold ')) 
+lbl.place(x=200, y=150)
 
-txt = tk.Entry(window,width=20  ,bg="yellow" ,fg="red",font=('times', 15, ' bold '))
-txt.place(x=700, y=215)
+txt = tk.Entry(window,width=input_width, bg=input_color ,fg="black",font=('times', 15, ' bold '))
+txt.place(x=370, y=195)
 
-lbl2 = tk.Label(window, text="Enter Name",width=20  ,fg="red"  ,bg="yellow"    ,height=2 ,font=('times', 15, ' bold ')) 
-lbl2.place(x=400, y=300)
+lbl2 = tk.Label(window, text="Enter Name:",width=20  ,fg="black"  ,bg=background_color    ,height=2 ,font=('times', 15, ' bold ')) 
+lbl2.place(x=183, y=300)
 
-txt2 = tk.Entry(window,width=20  ,bg="yellow"  ,fg="red",font=('times', 15, ' bold ')  )
-txt2.place(x=700, y=315)
+txt2 = tk.Entry(window, width=input_width, bg=input_color  ,fg="black",font=('times', 15, ' bold ')  )
+txt2.place(x=370, y=315)
 
-lbl3 = tk.Label(window, text="Notification : ",width=20  ,fg="red"  ,bg="yellow"  ,height=2 ,font=('times', 15, ' bold underline ')) 
-lbl3.place(x=400, y=400)
+lbl3 = tk.Label(window, text="Notification: ",width=20  ,fg="black"  ,bg=background_color  ,height=2 ,font=('times', 15, ' bold ')) 
+lbl3.place(x=180, y=400)
+message = tk.Label(window, text="" ,bg=label_color  ,fg="black"  ,width=30  ,height=2 ,border=2, font=('times', 15, ' bold ')) 
+message.place(x=370, y=400)
 
-message = tk.Label(window, text="" ,bg="yellow"  ,fg="red"  ,width=30  ,height=2, activebackground = "yellow" ,font=('times', 15, ' bold ')) 
-message.place(x=700, y=400)
-
-lbl3 = tk.Label(window, text="Attendance : ",width=20  ,fg="red"  ,bg="yellow"  ,height=2 ,font=('times', 15, ' bold  underline')) 
-lbl3.place(x=400, y=650)
-
-
-message2 = tk.Label(window, text="" ,fg="red"   ,bg="yellow",activeforeground = "green",width=30  ,height=2  ,font=('times', 15, ' bold ')) 
-message2.place(x=700, y=650)
+lbl3 = tk.Label(window, text="Attendance : ",width=20  ,fg="black"  ,bg=background_color  ,height=2,font=('times', 15, ' bold')) 
+lbl3.place(x=183, y=500)
+message2 = tk.Label(window, text="" ,fg="black"   ,bg=label_color,width=30  ,height=2  ,border=2, font=('times', 15, ' bold ')) 
+message2.place(x=370, y=500)
  
 def clear():
     txt.delete(0, 'end')    
@@ -205,17 +215,19 @@ def TrackImages():
     message2.configure(text= res)
 
   
-clearButton = tk.Button(window, text="Clear", command=clear  ,fg="red"  ,bg="yellow"  ,width=20  ,height=2 ,activebackground = "Red" ,font=('times', 15, ' bold '))
-clearButton.place(x=950, y=200)
-clearButton2 = tk.Button(window, text="Clear", command=clear2  ,fg="red"  ,bg="yellow"  ,width=20  ,height=2, activebackground = "Red" ,font=('times', 15, ' bold '))
-clearButton2.place(x=950, y=300)    
-takeImg = tk.Button(window, text="Take Images", command=TakeImages  ,fg="red"  ,bg="yellow"  ,width=20  ,height=3, activebackground = "Red" ,font=('times', 15, ' bold '))
-takeImg.place(x=200, y=500)
-trainImg = tk.Button(window, text="Train Images", command=TrainImages  ,fg="red"  ,bg="yellow"  ,width=20  ,height=3, activebackground = "Red" ,font=('times', 15, ' bold '))
-trainImg.place(x=500, y=500)
-trackImg = tk.Button(window, text="Track Images", command=TrackImages  ,fg="red"  ,bg="yellow"  ,width=20  ,height=3, activebackground = "Red" ,font=('times', 15, ' bold '))
-trackImg.place(x=800, y=500)
-quitWindow = tk.Button(window, text="Quit", command=window.destroy  ,fg="red"  ,bg="yellow"  ,width=20  ,height=3, activebackground = "Red" ,font=('times', 15, ' bold '))
-quitWindow.place(x=1100, y=500)
+clearButton = tk.Button(window, text="Clear", command=clear  ,fg="black"  ,bg=button_color, width=10  ,height=1 ,activebackground = "black" ,font=('times', 15, ' bold '))
+clearButton.place(x=600, y=180)
+clearButton2 = tk.Button(window, text="Clear", command=clear2  ,fg="black"  ,bg=button_color  , width=10  ,height=1, activebackground = "black" ,font=('times', 15, ' bold '))
+clearButton2.place(x=600, y=300)    
+
+
+takeImg = tk.Button(window, text="Take Images", command=TakeImages  ,fg="black"  ,bg=button_color  ,width=button_width  ,height=button_height, activebackground = "black" ,font=('times', 15, ' bold '))
+takeImg.place(x=900, y=150)
+trainImg = tk.Button(window, text="Train Images", command=TrainImages  ,fg="black"  ,bg=button_color  ,width=button_width  ,height=button_height, activebackground = "black" ,font=('times', 15, ' bold '))
+trainImg.place(x=900, y=270)
+trackImg = tk.Button(window, text="Track Images", command=TrackImages  ,fg="black"  ,bg=button_color  ,width=button_width  ,height=button_height, activebackground = "black" ,font=('times', 15, ' bold '))
+trackImg.place(x=900, y=390)
+quitWindow = tk.Button(window, text="Quit", command=window.destroy  ,fg="black"  ,bg=button_color  ,width=button_width  ,height=button_height, activebackground = "black" ,font=('times', 15, ' bold '))
+quitWindow.place(x=900, y=510)
  
 window.mainloop()
