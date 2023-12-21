@@ -175,7 +175,8 @@ def TrackImages():
     cam = cv2.VideoCapture(0)
     font = cv2.FONT_HERSHEY_SIMPLEX        
     col_names =  ['Id','Name','Date','Time']
-    attendance = pd.DataFrame(columns = col_names)    
+    attendance = pd.DataFrame(columns = col_names)
+    unique_ids = set()    
     while True:
         ret, im =cam.read()
         gray=cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
@@ -188,8 +189,9 @@ def TrackImages():
                 date = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d')
                 timeStamp = datetime.datetime.fromtimestamp(ts).strftime('%H:%M:%S')
                 aa=df.loc[df['Id'] == Id]['Name'].values
-                tt=str(Id)+"-"+aa
-                attendance.loc[len(attendance)] = [Id,aa,date,timeStamp]
+                tt=str(Id)+"-"+aa[0]
+                attendance.loc[len(attendance)] = [Id,aa[0],date,timeStamp]
+                unique_ids.add(Id)
                 
             else:
                 Id='Unknown'                
